@@ -13,6 +13,6 @@ Array.length > 1 "grid display of results"
 
 On the series search, it needs to display them in the correct order - assign each pose a numerical position value and then use .sort on results
 
-Show some random results on landing on the page? Or Pose of the Day - RNG taken from the date or somehow
+Landing page featured pose, RNG for fetch request on order and then RNG in array index to get random out of primary, second, standing etc
 
 Conditional render for image vs video depending on what the link is - should be doable taken from the end of the link .jpg vs movie file

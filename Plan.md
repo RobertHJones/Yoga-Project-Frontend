@@ -1,4 +1,4 @@
-Build in react or next?
+Build in react native for mobile
 TDD?
 
 Search by - English name, Sanskrit name, which series, strengthens, stretches

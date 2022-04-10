@@ -4,7 +4,6 @@ import { Text, View } from "react-native";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
-    "Inter-Black": require("./assets/fonts/Inter-Black.otf"),
     "Inter-SemiBoldItalic":
       "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
   });
@@ -14,11 +13,16 @@ export default function App() {
   }
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Platform Default</Text>
-      <Text style={{ fontFamily: "Inter-Black" }}>Inter Black</Text>
-      <Text style={{ fontFamily: "Inter-SemiBoldItalic" }}>
-        Inter SemiBoldItalic
+    <View
+      style={{
+        flex: 1,
+        justifyContent: "flex-start",
+        alignItems: "center",
+        marginTop: "6%",
+      }}
+    >
+      <Text style={{ fontFamily: "Inter-SemiBoldItalic", fontSize: "2rem" }}>
+        Ashtanga Companion
       </Text>
     </View>
   );

@@ -1,6 +1,7 @@
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Text, View } from "react-native";
+import Input from "./Components/Input";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
@@ -18,12 +19,20 @@ export default function App() {
         flex: 1,
         justifyContent: "flex-start",
         alignItems: "center",
-        marginTop: "6%",
+        backgroundColor: "#AAF85A",
       }}
     >
-      <Text style={{ fontFamily: "Inter-SemiBoldItalic", fontSize: "2rem" }}>
+      <Text
+        className="mainheading"
+        style={{
+          fontFamily: "Inter-SemiBoldItalic",
+          fontSize: "2rem",
+          marginTop: "6%",
+        }}
+      >
         Ashtanga Companion
       </Text>
+      <Input />
     </View>
   );
 }

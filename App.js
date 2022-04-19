@@ -9,6 +9,8 @@ export default function App() {
       "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
   });
 
+  async function fetchData(data) {}
+
   if (!fontsLoaded) {
     return <AppLoading />;
   }
@@ -32,7 +34,7 @@ export default function App() {
       >
         Ashtanga Companion
       </Text>
-      <Input />
+      <Input onSubmit={fetchData} />
     </View>
   );
 }

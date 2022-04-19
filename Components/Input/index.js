@@ -32,21 +32,13 @@ export default function Input({ onSubmit }) {
     { label: "Primary", value: "Primary", parent: "Series" },
     { label: "Standing", value: "Standing", parent: "Series" },
   ]);
-  //   const [stretchItems, setStretchItems] = useState([
-  //     { label: "Back", value: "Back" },
-  //     { label: "Abdomen", value: "Abdomen" },
-  //     { label: "Thigh", value: "Thigh" },
-  //     { label: "Hip", value: "Hip" },
-  //     { label: "Hamstring", value: "Hamstring" },
-  //   ]);
-  //   const [series, setSeries] = useState([
-  //     { label: "Standing", value: "Standing" },
-  //     { label: "Primary", value: "Primary" },
-  //     { label: "Second", value: "Second" },
-  //     { label: "Third", value: "Third" },
-  //   ]);
 
-  function searchData() {}
+  function searchData() {
+    console.log(text, value);
+    const data = Object.assign({ pose: text }, { other: value });
+    console.log(data);
+    onSubmit(data);
+  }
 
   return (
     <SafeAreaView>
@@ -69,32 +61,7 @@ export default function Input({ onSubmit }) {
         setItems={setItems}
         placeholder="Search by other fields"
       />
-      {/* <DropDownPicker
-        style={{
-          backgroundColor: "white",
-          border: "solid 1px black",
-        }}
-        open={open}
-        value={stretchValue}
-        items={stretchItems}
-        setOpen={setOpen}
-        setValue={setStretchValue}
-        setItems={setStretchItems}
-        placeholder="Search by area stretched"
-      />
-      <DropDownPicker
-        style={{
-          backgroundColor: "white",
-          border: "solid 1px black",
-        }}
-        open={open}
-        value={seriesValue}
-        items={series}
-        setOpen={setOpen}
-        setValue={setSeriesValue}
-        setItems={setSeries}
-        placeholder="Search by series"
-      /> */}
+
       <Button onPress={searchData} title="Search" color="#6608B6" />
     </SafeAreaView>
   );

@@ -2,6 +2,7 @@ import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { Text, View } from "react-native";
 import Input from "./Components/Input";
+import API_URL from "./config";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({

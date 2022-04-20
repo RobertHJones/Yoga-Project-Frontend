@@ -20,3 +20,11 @@ On the series search, it needs to display them in the correct order - assign eac
 Landing page featured pose, RNG for fetch request on order and then RNG in array index to get random out of primary, second, standing etc
 
 Conditional render for image vs video depending on what the link is - should be doable taken from the end of the link .jpg vs movie file
+
+Next tasks -
+
+Refactor the displayed result into the display component
+
+UseEffect to make featured pose upon landing using random number search
+
+Other fetch requests depending on what data is entered

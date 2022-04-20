@@ -14,6 +14,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 160,
+    marginLeft: 50,
   },
 });
 
@@ -32,7 +33,7 @@ export default function App() {
       const response = await fetch(`${API_URL}/english/${data.pose}`);
       const poseData = await response.json();
       console.log(poseData.payload[0]);
-      setPoses(poseData.payload[0]);
+      setPoses(poseData.payload);
     }
   }
 
@@ -61,13 +62,26 @@ export default function App() {
       </Text>
       <Input onSubmit={fetchData} />
       <Display />
-      <Text>{poses.english}</Text>
-      <Image
-        style={styles.logo}
-        source={{
-          uri: poses.image,
-        }}
-      />
+      {poses.length === 0 && <Text></Text>}
+      {poses.length > 0 && (
+        <View>
+          <Text>
+            {poses[0].sanskrit}, known as {poses[0].english} in English. It is
+            part of the {poses[0].series} series
+          </Text>
+          <Image
+            style={styles.logo}
+            source={{
+              uri: poses[0].image,
+            }}
+          />
+          <Text>Instructions - {poses[0].instructions}</Text>
+          <Text>
+            This pose stretches the {poses[0].stretches} and strengthens the{" "}
+            {poses[0].strengthens}
+          </Text>
+        </View>
+      )}
     </View>
   );
 }

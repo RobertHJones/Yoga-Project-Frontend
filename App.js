@@ -24,16 +24,23 @@ export default function App() {
       "https://rsms.me/inter/font-files/Inter-SemiBoldItalic.otf?v=3.12",
   });
   const [poses, setPoses] = useState([]);
+  const [error, setError] = useState("");
 
   const API_URL = "https://yoga-database.herokuapp.com/poses";
 
   async function fetchData(data) {
     console.log(API_URL);
-    if (data.pose !== "") {
+    if (data.pose.slice(data.pose.length - 5) === "asana") {
+      const response = await fetch(`${API_URL}/sanskrit/${data.pose}`);
+      const poseData = await response.json();
+      setPoses(poseData.payload);
+      setError(`No results for ${data.pose}, please search again `);
+    } else if (data.pose !== "") {
       const response = await fetch(`${API_URL}/english/${data.pose}`);
       const poseData = await response.json();
       console.log(poseData.payload[0]);
       setPoses(poseData.payload);
+      setError(`No results for ${data.pose}, please search again `);
     }
   }
 
@@ -61,27 +68,7 @@ export default function App() {
         Ashtanga Companion
       </Text>
       <Input onSubmit={fetchData} />
-      <Display />
-      {poses.length === 0 && <Text></Text>}
-      {poses.length > 0 && (
-        <View>
-          <Text>
-            {poses[0].sanskrit}, known as {poses[0].english} in English. It is
-            part of the {poses[0].series} series
-          </Text>
-          <Image
-            style={styles.logo}
-            source={{
-              uri: poses[0].image,
-            }}
-          />
-          <Text>Instructions - {poses[0].instructions}</Text>
-          <Text>
-            This pose stretches the {poses[0].stretches} and strengthens the{" "}
-            {poses[0].strengthens}
-          </Text>
-        </View>
-      )}
+      <Display poseData={poses} error={error} />
     </View>
   );
 }

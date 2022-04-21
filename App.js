@@ -41,6 +41,16 @@ export default function App() {
       console.log(poseData.payload[0]);
       setPoses(poseData.payload);
       setError(`No results for ${data.pose}, please search again `);
+    } else if (
+      data.other === "Standing" ||
+      data.other === "Primary" ||
+      data.other === "Intermediate" ||
+      data.other === "Third"
+    ) {
+      const response = await fetch(`${API_URL}/series/${data.other}`);
+      const poseData = await response.json();
+      console.log(poseData.payload);
+      setPoses(poseData.payload);
     }
   }
 

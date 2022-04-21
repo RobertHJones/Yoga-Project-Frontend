@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     width: 200,
     height: 160,
     marginLeft: 50,
+    zIndex: -2,
   },
 });
 
@@ -17,7 +18,7 @@ export default function Display({ poseData, error }) {
   return (
     <View>
       {poseData.length === 0 && <Text>{error}</Text>}
-      {poseData.length > 0 && (
+      {poseData.length === 1 && (
         <View>
           <Text>
             {poseData[0].sanskrit}, known as {poseData[0].english} in English.
@@ -36,6 +37,22 @@ export default function Display({ poseData, error }) {
           </Text>
         </View>
       )}
+      {poseData.length > 1 &&
+        poseData.map((item, index) => {
+          return (
+            <View key={index}>
+              <Text>
+                {item.sanskrit}/{item.english}
+              </Text>
+              <Image
+                style={styles.logo}
+                source={{
+                  uri: item.image,
+                }}
+              />
+            </View>
+          );
+        })}
     </View>
   );
 }

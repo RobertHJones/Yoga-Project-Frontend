@@ -28,7 +28,7 @@ export default function Input({ onSubmit }) {
       parent: "Area Stretched",
     },
     { label: "Third", value: "Third", parent: "Series" },
-    { label: "Second", value: "Second", parent: "Series" },
+    { label: "Second", value: "Intermediate", parent: "Series" },
     { label: "Primary", value: "Primary", parent: "Series" },
     { label: "Standing", value: "Standing", parent: "Series" },
   ]);

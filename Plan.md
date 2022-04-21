@@ -23,8 +23,6 @@ Conditional render for image vs video depending on what the link is - should be 
 
 Next tasks -
 
-Refactor the displayed result into the display component
-
 UseEffect to make featured pose upon landing using random number search
 
 Other fetch requests depending on what data is entered

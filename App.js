@@ -6,18 +6,6 @@ import Input from "./Components/Input";
 import { useState } from "react";
 // import API_URL from "./config";
 
-const styles = StyleSheet.create({
-  container: {
-    paddingTop: 50,
-  },
-
-  logo: {
-    width: 200,
-    height: 160,
-    marginLeft: 50,
-  },
-});
-
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
     "Inter-SemiBoldItalic":

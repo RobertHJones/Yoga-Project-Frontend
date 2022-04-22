@@ -11,6 +11,10 @@ const styles = StyleSheet.create({
     height: 160,
     marginLeft: 50,
     zIndex: -2,
+    borderRadius: 20,
+    overflow: "hidden",
+    borderWidth: 2,
+    borderColor: "#6608B6",
   },
 });
 

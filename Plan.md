@@ -28,3 +28,5 @@ UseEffect to make featured pose upon landing using random number search
 Sort out z-index/styling so that you can view drop down with images there
 
 Select individual pose from list - put id onto image and then onpress?
+
+Deploy

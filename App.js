@@ -26,7 +26,7 @@ export default function App() {
     } else if (data.pose !== "") {
       const response = await fetch(`${API_URL}/english/${data.pose}`);
       const poseData = await response.json();
-      console.log(poseData.payload[0]);
+
       setPoses(poseData.payload);
       setError(`No results for ${data.pose}, please search again `);
     } else if (
@@ -37,7 +37,15 @@ export default function App() {
     ) {
       const response = await fetch(`${API_URL}/series/${data.other}`);
       const poseData = await response.json();
-      console.log(poseData.payload);
+      setPoses(poseData.payload);
+    } else if (data.other.slice(data.other.length - 7) === "stretch") {
+      const search = data.other.slice(0, data.other.length - 7);
+      const response = await fetch(`${API_URL}/stretches/${search}`);
+      const poseData = await response.json();
+      setPoses(poseData.payload);
+    } else if (data.other !== "") {
+      const response = await fetch(`${API_URL}/strengthens/${data.other}`);
+      const poseData = await response.json();
       setPoses(poseData.payload);
     }
   }

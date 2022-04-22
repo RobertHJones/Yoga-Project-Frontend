@@ -25,8 +25,6 @@ Next tasks -
 
 UseEffect to make featured pose upon landing using random number search
 
-Other fetch requests depending on what data is entered
-
 Sort out z-index/styling so that you can view drop down with images there
 
-Select individual pose from list
+Select individual pose from list - put id onto image and then onpress?

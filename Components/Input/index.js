@@ -7,8 +7,6 @@ export default function Input({ onSubmit }) {
   const [text, onChangeText] = useState("");
   const [open, setOpen] = useState(false);
   const [value, setValue] = useState(null);
-  const [stretchValue, setStretchValue] = useState(null);
-  const [seriesValue, setSeriesValue] = useState(null);
   const [items, setItems] = useState([
     { label: "Area Stretched", value: "Area Stretched" },
     { label: "Area Strengthend", value: "Area Strengthend" },

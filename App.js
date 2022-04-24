@@ -1,9 +1,9 @@
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
-import { Text, View, Image, StyleSheet } from "react-native";
+import { Text, View } from "react-native";
 import Display from "./Components/Display";
 import Input from "./Components/Input";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import API_URL from "./config";
 
 export default function App() {
@@ -13,11 +13,13 @@ export default function App() {
   });
   const [poses, setPoses] = useState([]);
   const [error, setError] = useState("");
+  const [featured, setFeatured] = useState("Featured Pose");
 
   const API_URL = "https://yoga-database.herokuapp.com/poses";
 
   async function fetchData(data) {
     console.log(API_URL);
+    setFeatured("");
     if (data.pose.slice(data.pose.length - 5) === "asana") {
       const response = await fetch(`${API_URL}/sanskrit/${data.pose}`);
       const poseData = await response.json();
@@ -26,7 +28,7 @@ export default function App() {
     } else if (data.pose !== "") {
       const response = await fetch(`${API_URL}/english/${data.pose}`);
       const poseData = await response.json();
-
+      console.log(poseData.payload[0]);
       setPoses(poseData.payload);
       setError(`No results for ${data.pose}, please search again `);
     } else if (
@@ -37,6 +39,7 @@ export default function App() {
     ) {
       const response = await fetch(`${API_URL}/series/${data.other}`);
       const poseData = await response.json();
+      console.log(poseData.payload);
       setPoses(poseData.payload);
     } else if (data.other.slice(data.other.length - 7) === "stretch") {
       const search = data.other.slice(0, data.other.length - 7);
@@ -49,6 +52,16 @@ export default function App() {
       setPoses(poseData.payload);
     }
   }
+  useEffect(async () => {
+    const randomSearch = Math.ceil(Math.random() * 20);
+    const randomSeries = Math.floor(Math.random() * 4);
+    const response = await fetch(`${API_URL}/position/${randomSearch}`);
+    const pose = await response.json();
+    console.log(randomSearch);
+    console.log(pose);
+    console.log(randomSeries);
+    setPoses(pose.payload); // this should be [randomSeries] once I've added more
+  }, []);
 
   if (!fontsLoaded) {
     return <AppLoading />;
@@ -74,7 +87,7 @@ export default function App() {
         Ashtanga Companion
       </Text>
       <Input onSubmit={fetchData} />
-      <Display poseData={poses} error={error} />
+      <Display poseData={poses} error={error} featured={featured} />
     </View>
   );
 }

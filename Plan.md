@@ -23,10 +23,10 @@ Conditional render for image vs video depending on what the link is - should be 
 
 Next tasks -
 
-UseEffect to make featured pose upon landing using random number search
-
 Sort out z-index/styling so that you can view drop down with images there
 
-Select individual pose from list - put id onto image and then onpress?
+Select individual pose from list - find way to do this
+
+if random search brings up more than one result, how to display only one?
 
 Deploy

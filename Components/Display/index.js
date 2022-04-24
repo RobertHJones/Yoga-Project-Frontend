@@ -19,6 +19,8 @@ const styles = StyleSheet.create({
 });
 
 export default function Display({ poseData, error, featured }) {
+  const randomSeries = Math.floor(Math.random() * 1); // this should become * 4 when I have more available
+  console.log(randomSeries);
   return (
     <View>
       {poseData.length === 0 && <Text>{error}</Text>}
@@ -51,7 +53,38 @@ export default function Display({ poseData, error, featured }) {
           </Text>
         </View>
       )}
+      {poseData.length > 1 && featured !== "" && (
+        <View>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+            }}
+          >
+            {featured}
+          </Text>
+          <Text>
+            {poseData[randomSeries].sanskrit}, known as{" "}
+            {poseData[randomSeries].english} in English. It is part of the{" "}
+            {poseData[randomSeries].series} series
+          </Text>
+          <Image
+            style={styles.logo}
+            source={{
+              uri: poseData[randomSeries].image,
+            }}
+          />
+          <Text>Instructions - {poseData[randomSeries].instructions}</Text>
+          <Text>
+            This pose stretches the {poseData[randomSeries].stretches} and
+            strengthens the {poseData[randomSeries].strengthens}
+          </Text>
+        </View>
+      )}
       {poseData.length > 1 &&
+        featured === "" &&
         poseData
           .sort((a, b) => {
             return a.position - b.position;

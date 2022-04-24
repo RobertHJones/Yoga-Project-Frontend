@@ -3,6 +3,16 @@ import { useState } from "react";
 import { SafeAreaView, StyleSheet, TextInput, Button } from "react-native";
 import DropDownPicker from "react-native-dropdown-picker";
 
+const styles = StyleSheet.create({
+  input: {
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: "white",
+  },
+});
+
 export default function Input({ onSubmit }) {
   const [text, onChangeText] = useState("");
   const [open, setOpen] = useState(false);
@@ -64,12 +74,3 @@ export default function Input({ onSubmit }) {
     </SafeAreaView>
   );
 }
-const styles = StyleSheet.create({
-  input: {
-    height: 40,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: "white",
-  },
-});

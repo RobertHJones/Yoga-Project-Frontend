@@ -23,7 +23,9 @@ export default function Display({ poseData, error, featured }) {
   console.log(randomSeries);
   return (
     <View>
+      {/* Error for if no results */}
       {poseData.length === 0 && <Text>{error}</Text>}
+      {/* Display one result */}
       {poseData.length === 1 && (
         <View>
           <Text
@@ -53,6 +55,7 @@ export default function Display({ poseData, error, featured }) {
           </Text>
         </View>
       )}
+      {/* Display one result from many on the random search for featured pose */}
       {poseData.length > 1 && featured !== "" && (
         <View>
           <Text
@@ -83,6 +86,7 @@ export default function Display({ poseData, error, featured }) {
           </Text>
         </View>
       )}
+      {/* Display many results mapping through the array */}
       {poseData.length > 1 &&
         featured === "" &&
         poseData

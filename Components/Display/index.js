@@ -9,7 +9,7 @@ const styles = StyleSheet.create({
   logo: {
     width: 200,
     height: 160,
-    marginLeft: 50,
+    marginBottom: 15,
     zIndex: -2,
     borderRadius: 20,
     overflow: "hidden",
@@ -42,21 +42,40 @@ export default function Display({ poseData, error }) {
         </View>
       )}
       {poseData.length > 1 &&
-        poseData.map((item, index) => {
-          return (
-            <View key={index}>
-              <Text>
-                {item.sanskrit}/{item.english}
-              </Text>
-              <Image
-                style={styles.logo}
-                source={{
-                  uri: item.image,
+        poseData
+          .sort((a, b) => {
+            return a.position - b.position;
+          })
+          .map((item, index) => {
+            return (
+              <View
+                style={{
+                  flex: 1,
+                  // justifyContent: "flex-start",
+                  alignItems: "center",
+                  backgroundColor: "#AAF85A",
                 }}
-              />
-            </View>
-          );
-        })}
+                key={index}
+              >
+                <Text
+                  style={{
+                    fontFamily: "Inter-SemiBoldItalic",
+                    fontSize: "0.9rem",
+                    marginTop: "4%",
+                    marginBottom: "2%",
+                  }}
+                >
+                  {item.sanskrit}/{item.english}
+                </Text>
+                <Image
+                  style={styles.logo}
+                  source={{
+                    uri: item.image,
+                  }}
+                />
+              </View>
+            );
+          })}
     </View>
   );
 }

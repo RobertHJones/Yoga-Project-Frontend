@@ -27,6 +27,6 @@ Sort out z-index/styling so that you can view drop down with images there
 
 Select individual pose from list - find way to do this
 
-if random search brings up more than one result, how to display only one?
+if random search brings up more than one result, how to display only one? Maybe play with poseData.length > 1 and add in && featured !== "" and then put the random number in here
 
 Deploy

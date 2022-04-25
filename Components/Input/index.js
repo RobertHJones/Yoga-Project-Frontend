@@ -60,6 +60,8 @@ export default function Input({ onSubmit }) {
         style={{
           backgroundColor: "white",
           border: "solid 1px black",
+          zIndex: 20,
+          elevation: 50,
         }}
         open={open}
         value={value}

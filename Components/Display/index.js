@@ -6,7 +6,18 @@ const styles = StyleSheet.create({
     paddingTop: 50,
   },
 
-  logo: {
+  main: {
+    width: 260,
+    height: 208,
+    marginBottom: 15,
+    zIndex: -2,
+    borderRadius: 20,
+    overflow: "hidden",
+    borderWidth: 2,
+    borderColor: "#6608B6",
+  },
+
+  list: {
     width: 200,
     height: 160,
     marginBottom: 15,
@@ -24,32 +35,79 @@ export default function Display({ poseData, error, featured }) {
   return (
     <View>
       {/* Error for if no results */}
-      {poseData.length === 0 && <Text>{error}</Text>}
+      {poseData.length === 0 && (
+        <Text
+          style={{
+            fontFamily: "Inter-SemiBoldItalic",
+            fontSize: "1rem",
+            marginTop: "4%",
+            marginBottom: "2%",
+          }}
+        >
+          {error}
+        </Text>
+      )}
       {/* Display one result */}
       {poseData.length === 1 && (
-        <View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start",
+            alignItems: "center",
+            backgroundColor: "#AAF85A",
+          }}
+        >
           <Text
             style={{
               fontFamily: "Inter-SemiBoldItalic",
-              fontSize: "1rem",
+              fontSize: "1.5rem",
               marginTop: "4%",
               marginBottom: "2%",
             }}
           >
             {featured}
           </Text>
-          <Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
             {poseData[0].sanskrit}, known as {poseData[0].english} in English.
-            It is part of the {poseData[0].series} series
+            It is part of the {poseData[0].series} series.
           </Text>
           <Image
-            style={styles.logo}
+            style={styles.main}
             source={{
               uri: poseData[0].image,
             }}
           />
-          <Text>Instructions - {poseData[0].instructions}</Text>
-          <Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
+            Instructions - {poseData[0].instructions}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
             This pose stretches the {poseData[0].stretches} and strengthens the{" "}
             {poseData[0].strengthens}
           </Text>
@@ -57,30 +115,66 @@ export default function Display({ poseData, error, featured }) {
       )}
       {/* Display one result from many on the random search for featured pose */}
       {poseData.length > 1 && featured !== "" && (
-        <View>
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start",
+            alignItems: "center",
+            backgroundColor: "#AAF85A",
+          }}
+        >
           <Text
             style={{
               fontFamily: "Inter-SemiBoldItalic",
-              fontSize: "1rem",
+              fontSize: "1.5rem",
               marginTop: "4%",
               marginBottom: "2%",
             }}
           >
             {featured}
           </Text>
-          <Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
             {poseData[randomSeries].sanskrit}, known as{" "}
             {poseData[randomSeries].english} in English. It is part of the{" "}
             {poseData[randomSeries].series} series
           </Text>
           <Image
-            style={styles.logo}
+            style={styles.main}
             source={{
               uri: poseData[randomSeries].image,
             }}
           />
-          <Text>Instructions - {poseData[randomSeries].instructions}</Text>
-          <Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
+            Instructions - {poseData[randomSeries].instructions}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
             This pose stretches the {poseData[randomSeries].stretches} and
             strengthens the {poseData[randomSeries].strengthens}
           </Text>
@@ -110,12 +204,14 @@ export default function Display({ poseData, error, featured }) {
                     fontSize: "0.9rem",
                     marginTop: "4%",
                     marginBottom: "2%",
+                    marginLeft: "3%",
+                    textAlign: "center",
                   }}
                 >
                   {item.sanskrit}/{item.english}
                 </Text>
                 <Image
-                  style={styles.logo}
+                  style={styles.list}
                   source={{
                     uri: item.image,
                   }}

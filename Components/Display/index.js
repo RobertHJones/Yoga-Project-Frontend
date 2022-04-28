@@ -113,7 +113,7 @@ export default function Display({ poseData, error, featured }) {
           </Text>
         </View>
       )}
-      {/* Display one result from many on the random search for featured pose */}
+      {/* Display one result from several on the random search for featured pose */}
       {poseData.length > 1 && featured !== "" && (
         <View
           style={{
@@ -180,7 +180,7 @@ export default function Display({ poseData, error, featured }) {
           </Text>
         </View>
       )}
-      {/* Display many results mapping through the array */}
+      {/* Display many results mapping through the array, for series etc */}
       {poseData.length > 1 &&
         featured === "" &&
         poseData

@@ -23,10 +23,10 @@ Conditional render for image vs video depending on what the link is - should be 
 
 Next tasks -
 
-Sort out z-index/styling so that you can view drop down with images there
-
 Select individual pose from list - find way to do this
 
 Deploy
 
 Populate backend more
+
+Edit some of the data for if it doesn't stretch/strengthen and display this differently so there aren't blanks

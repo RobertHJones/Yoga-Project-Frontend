@@ -62,6 +62,7 @@ export default function Input({ onSubmit }) {
           border: "solid 1px black",
           zIndex: 20,
           elevation: 50,
+          marginTop: open ? 175 : 20,
         }}
         open={open}
         value={value}
@@ -70,6 +71,7 @@ export default function Input({ onSubmit }) {
         setValue={setValue}
         setItems={setItems}
         placeholder="Search by other fields"
+        dropDownDirection="TOP"
       />
 
       <Button onPress={searchData} title="Search" color="#6608B6" />

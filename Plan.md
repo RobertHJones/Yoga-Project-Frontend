@@ -29,4 +29,6 @@ Deploy
 
 Populate backend more
 
+Edit the image data so sanskrit search always works from image press
+
 Edit some of the data for if it doesn't stretch/strengthen and display this differently so there aren't blanks

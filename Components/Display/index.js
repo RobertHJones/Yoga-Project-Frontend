@@ -1,5 +1,7 @@
 import React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
+import { TouchableOpacity } from "react-native-web";
+import { useState } from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -30,8 +32,18 @@ const styles = StyleSheet.create({
 });
 
 export default function Display({ poseData, error, featured }) {
+  const API_URL = "https://yoga-database.herokuapp.com/poses";
+  const [imagePose, setImagePose] = useState("");
   const randomSeries = Math.floor(Math.random() * 1); // this should become * 4 when I have more available
   console.log(randomSeries);
+  async function checkImage(e) {
+    console.log(e.target.src.slice(30, e.target.src.length - 4));
+    let pose = e.target.src.slice(30, e.target.src.length - 4);
+    const response = await fetch(`${API_URL}/sanskrit/${pose}`);
+    const poseData = await response.json();
+    console.log(poseData);
+    setImagePose(poseData);
+  }
   return (
     <View>
       {/* Error for if no results */}
@@ -210,12 +222,14 @@ export default function Display({ poseData, error, featured }) {
                 >
                   {item.sanskrit}/{item.english}
                 </Text>
-                <Image
-                  style={styles.list}
-                  source={{
-                    uri: item.image,
-                  }}
-                />
+                <TouchableOpacity id={item._id} onPress={checkImage}>
+                  <Image
+                    style={styles.list}
+                    source={{
+                      uri: item.image,
+                    }}
+                  />
+                </TouchableOpacity>
               </View>
             );
           })}

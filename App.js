@@ -4,7 +4,8 @@ import { Text, View } from "react-native";
 import Display from "./Components/Display";
 import Input from "./Components/Input";
 import { useState, useEffect } from "react";
-// import API_URL from "./config";
+
+import { API_URL } from "@env";
 
 export default function App() {
   const [fontsLoaded] = Font.useFonts({
@@ -15,10 +16,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [featured, setFeatured] = useState("Featured Pose");
 
-  const API_URL = "https://yoga-database.herokuapp.com/poses";
-
   async function fetchData(data) {
-    console.log(API_URL);
     setFeatured("");
     // Sanskrit search
     if (data.pose.slice(data.pose.length - 5) === "asana") {

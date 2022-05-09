@@ -40,12 +40,77 @@ export default function Display({ poseData, error, featured }) {
     console.log(e.target.src.slice(30, e.target.src.length - 4));
     let pose = e.target.src.slice(30, e.target.src.length - 4);
     const response = await fetch(`${API_URL}/sanskrit/${pose}`);
-    const poseData = await response.json();
-    console.log(poseData);
-    setImagePose(poseData);
+    const data = await response.json();
+    console.log(data.payload);
+    setImagePose(data.payload[0]);
   }
   return (
     <View>
+      {imagePose !== "" && (
+        <View
+          style={{
+            flex: 1,
+            justifyContent: "flex-start",
+            alignItems: "center",
+            backgroundColor: "#AAF85A",
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1.5rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+            }}
+          >
+            {featured}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
+            {imagePose.sanskrit}, known as {imagePose.english} in English. It is
+            part of the {imagePose.series} series.
+          </Text>
+          <Image
+            style={styles.main}
+            source={{
+              uri: imagePose.image,
+            }}
+          />
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
+            Instructions - {imagePose.instructions}
+          </Text>
+          <Text
+            style={{
+              fontFamily: "Inter-SemiBoldItalic",
+              fontSize: "1rem",
+              marginTop: "4%",
+              marginBottom: "2%",
+              marginLeft: "3%",
+              textAlign: "center",
+            }}
+          >
+            This pose stretches the {imagePose.stretches} and strengthens the{" "}
+            {imagePose.strengthens}
+          </Text>
+        </View>
+      )}
       {/* Error for if no results */}
       {poseData.length === 0 && (
         <Text

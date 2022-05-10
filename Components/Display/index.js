@@ -1,7 +1,7 @@
 import React from "react";
 import { Text, View, Image, StyleSheet } from "react-native";
 import { TouchableOpacity } from "react-native-web";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const styles = StyleSheet.create({
   container: {
@@ -44,6 +44,12 @@ export default function Display({ poseData, error, featured }) {
     console.log(data.payload);
     setImagePose(data.payload[0]);
   }
+
+  // set imagePose back to "" on a new search so that you can display full results again
+  useEffect(() => {
+    setImagePose("");
+  }, [poseData]);
+
   return (
     <View>
       {imagePose !== "" && poseData.length > 1 && (

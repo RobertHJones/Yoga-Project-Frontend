@@ -23,8 +23,6 @@ Conditional render for image vs video depending on what the link is - should be 
 
 Next tasks -
 
-Select individual pose from list - retrieved the data but how is best to display it? Need to tidy up App
-
 Deploy
 
 Populate backend more

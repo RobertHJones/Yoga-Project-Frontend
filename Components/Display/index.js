@@ -46,7 +46,7 @@ export default function Display({ poseData, error, featured }) {
   }
   return (
     <View>
-      {imagePose !== "" && (
+      {imagePose !== "" && poseData.length > 1 && (
         <View
           style={{
             flex: 1,
@@ -259,6 +259,7 @@ export default function Display({ poseData, error, featured }) {
       )}
       {/* Display many results mapping through the array, for series etc */}
       {poseData.length > 1 &&
+        imagePose === "" &&
         featured === "" &&
         poseData
           .sort((a, b) => {

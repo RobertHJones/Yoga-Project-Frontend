@@ -102,19 +102,49 @@ export default function Display({ poseData, error, featured }) {
           >
             Instructions - {imagePose.instructions}
           </Text>
-          <Text
-            style={{
-              fontFamily: "Inter-SemiBoldItalic",
-              fontSize: "1rem",
-              marginTop: "4%",
-              marginBottom: "2%",
-              marginLeft: "3%",
-              textAlign: "center",
-            }}
-          >
-            This pose stretches the {imagePose.stretches} and strengthens the{" "}
-            {imagePose.strengthens}
-          </Text>
+          {imagePose.strengthens === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose stretches the {imagePose.stretches}
+            </Text>
+          )}
+          {imagePose.stretches === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose strengthens the {imagePose.strengthens}
+            </Text>
+          )}
+          {imagePose.strengthens !== "" && imagePose.stretches !== "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose stretches the {imagePose.stretches} and strengthens the{" "}
+              {imagePose.strengthens}
+            </Text>
+          )}
         </View>
       )}
       {/* Error for if no results */}
@@ -181,19 +211,49 @@ export default function Display({ poseData, error, featured }) {
           >
             Instructions - {poseData[0].instructions}
           </Text>
-          <Text
-            style={{
-              fontFamily: "Inter-SemiBoldItalic",
-              fontSize: "1rem",
-              marginTop: "4%",
-              marginBottom: "2%",
-              marginLeft: "3%",
-              textAlign: "center",
-            }}
-          >
-            This pose stretches the {poseData[0].stretches} and strengthens the{" "}
-            {poseData[0].strengthens}
-          </Text>
+          {poseData[0].strengthens === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose stretches the {poseData[0].stretches}
+            </Text>
+          )}
+          {poseData[0].stretches === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose strengthens the {poseData[0].strengthens}
+            </Text>
+          )}
+          {poseData[0].strengthens !== "" && poseData[0].stretches !== "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose stretches the {poseData[0].stretches} and strengthens
+              the {poseData[0].strengthens}
+            </Text>
+          )}
         </View>
       )}
       {/* Display one result from several on the random search for featured pose */}
@@ -248,19 +308,50 @@ export default function Display({ poseData, error, featured }) {
           >
             Instructions - {poseData[randomSeries].instructions}
           </Text>
-          <Text
-            style={{
-              fontFamily: "Inter-SemiBoldItalic",
-              fontSize: "1rem",
-              marginTop: "4%",
-              marginBottom: "2%",
-              marginLeft: "3%",
-              textAlign: "center",
-            }}
-          >
-            This pose stretches the {poseData[randomSeries].stretches} and
-            strengthens the {poseData[randomSeries].strengthens}
-          </Text>
+          {poseData[randomSeries].strengthens === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose stretches the {poseData[randomSeries].stretches}
+            </Text>
+          )}
+          {poseData[randomSeries].stretches === "" && (
+            <Text
+              style={{
+                fontFamily: "Inter-SemiBoldItalic",
+                fontSize: "1rem",
+                marginTop: "4%",
+                marginBottom: "2%",
+                marginLeft: "3%",
+                textAlign: "center",
+              }}
+            >
+              This pose strengthens the {poseData[randomSeries].strengthens}
+            </Text>
+          )}
+          {poseData[randomSeries].strengthens !== "" &&
+            poseData[randomSeries].stretches !== "" && (
+              <Text
+                style={{
+                  fontFamily: "Inter-SemiBoldItalic",
+                  fontSize: "1rem",
+                  marginTop: "4%",
+                  marginBottom: "2%",
+                  marginLeft: "3%",
+                  textAlign: "center",
+                }}
+              >
+                This pose stretches the {poseData[randomSeries].stretches} and
+                strengthens the {poseData[randomSeries].strengthens}
+              </Text>
+            )}
         </View>
       )}
       {/* Display many results mapping through the array, for series etc */}
